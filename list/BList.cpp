@@ -16,6 +16,13 @@ BList::BList(int* data, int size)
 	_size = size;
 }
 
+void BList::swap(int& t1, int& t2)
+{
+	int temp = t1;
+	t1 = t2;
+	t2 = temp;
+}
+
 void BList::arrayCopy(int* data, int size)
 {
 	int* tempData = new int[size];
@@ -43,20 +50,42 @@ int& BList::operator[](size_t j)
 	return *(_data + j);
 }
 
-void BList::Add(int item)
+void BList::push_back(int item)
 {
 	_size++;
 	arrayResize(_data, _size);
 	_data[_size - 1] = item;
 }
 
-void BList::Remove()
+void BList::pop_back()
 {
 	_size = _size > 0 ? _size - 1 : 0;
 	arrayResize(_data, _size);
 }
 
-int BList::IndexOf(int item)
+void BList::add_at(size_t index, int item)
+{
+	if ((unsigned)index > _size)
+		return;
+	push_back(item);
+	for (size_t i = _size - 1; i > index; i--)
+	{
+		swap(_data[i], _data[i - 1]);
+	}
+}
+
+void BList::remove_at(size_t index)
+{
+	if ((unsigned)index > _size)
+		return;
+	for (size_t i = index; i < _size - 1; i++)
+	{
+		swap(_data[i], _data[i + 1]);
+	}
+	pop_back();
+}
+
+int BList::index_of(int item)
 {
 	for (size_t i = 0; i < _size; i++)
 	{
@@ -69,7 +98,7 @@ int BList::IndexOf(int item)
 	return -1;
 }
 
-int BList::Size()
+int BList::size()
 {
 	return _size;
 }
