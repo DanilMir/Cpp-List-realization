@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BList.cpp" />
     <ClCompile Include="list.cpp" />
   </ItemGroup>
   <ItemGroup>

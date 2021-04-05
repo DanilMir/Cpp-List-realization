@@ -1,29 +1,26 @@
-﻿
-
-#include <iostream>
+﻿#include <iostream>
+#include <string.h>
 #include "BList.h"
+
+using namespace std;
 
 int main()
 {
-    int * tt = new int[1];
-    tt[0] = 0;
-    BList b(tt, 1);
-    b[0] = 228;
+	int a[4]{ 1,2,3,4 };
 
-    b.push_back(2);
-    b.push_back(324);
-    b.push_back(12);
+	BList<int> array(a, 4);
 
-    std::cout << '\n';
-    for (size_t i = 0; i < b.size(); i++)
-    {
-        std::cout << b[i] << ' ';
-    }
+	array.push_back(1);
+	array.push_back(123);
+	array.push_back(34);
+	array.push_back(231);
+	array.push_back(223);
 
-    b.remove_at(1);
-    std::cout << '\n';
-    for (size_t i = 0; i < b.size(); i++)
-    {
-        std::cout << b[i] << ' ';
-    }
+
+	
+	for (size_t i = 0; i < array.size(); i++)
+	{
+		cout << array[i] << ' ';
+	}
+	cout << '\n';
 }
